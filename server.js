@@ -18,6 +18,8 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
+
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -49,6 +51,10 @@ app.use("/api/users", usersRoutes(knex));
 app.get("/", (req, res) => {
   res.render("index");
 });
+app.get('/register', function (req, res) {
+  res.render('register')
+})
+
 
 // Authentication and Authorization Middleware
 var auth = function(req, res, next) {
@@ -76,9 +82,50 @@ app.get('/logout', function (req, res) {
 });
  
 // Get notes endpoint
-app.get('/notes/create', auth, function (req, res) {
-  res.render("create_note");
+app.get('/notes/:postid', auth, function (req, res) {
+  
+  const postid = req.params.postid;
+   knex.select('*').from('notes').where({id:postid})
+   .then(data => res.send(data))
+  
 });
+
+
+// app.get('/notes/:postid', function (req, res) {
+//   res.send("this is notes/:postid");
+// });
+
+// app.get('/notes/bookmarks/:user_id'), function (req, res){
+//   res.send('this is notes/bookmarks/:user_id')
+// }
+
+// app.get('notes/bookmarks/:user_id/:bookmark_id'), function (req, res){
+//   res.send('this is notes/bookmarks + :userid/bookmarks')
+// }
+
+// app.get('users/user_id'), function(req,res){
+//   res.send ('eidt profile page')
+// }
+
+app.post('/register', (req, res) => {
+  if (!req.body.email || !req.body.password) {
+    res.render('invalidField')
+    
+  }else{
+    knex('users').insert({ 
+      'first_name': req.body.first_name ,
+       'last_name': req.body.last_name ,
+       'email': req.body.email,
+       'password': req.body.password,
+      })
+      .then(function(err) {
+              console.log(err);
+            })
+      
+      res.redirect('/');
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
