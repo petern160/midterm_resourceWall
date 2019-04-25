@@ -1,41 +1,108 @@
-* {
-  box-sizing: border-box;
-  font-size: 22px;
-  font-family: "Helvetica", sans-serif;
-  color: #333333;
-}
-
 .container {
-  background-color: #f2f2f2;
-  padding: 10px;
-  border: 2px solid #CCCCCC;
-  max-width: 900px;
-  margin: 0 auto;
-  height: 470px;
-  display: flex;
-  flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */
-  justify-content: flex-start;
-  align-items: flex-start;
+  width: 98%;
 }
 
-.item {
-  background-color: orange;
-  height: 150px;
-  width: 31%;
-  margin: 1%;
-  padding: 10px;
+.logo {
+  border-radius: 50%;
 }
 
-.item:nth-child(2) {
-  background-color: pink;
-  height: 250px;
+.text-muted a {
+  color: #989898;
 }
 
-.item:nth-child(3) {
-  height: 190px;
+.text-muted a:hover {
+  color: grey;
 }
 
-.item:nth-child(4) {
-  background-color: aqua;
-  height: 220px;
+.fa a:active, a:hover, a:visited {
+  text-decoration: none;
+}
+
+/* Tool Colors */
+.general {
+  background-color: #0095af;
+}
+
+.general .card-title {
+  color: #f3f3f3;
+}
+
+.general .card-text {
+  color: #f3f3f3;
+}
+
+.card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .2s ease;
+  background-color: #008CBA;
+}
+
+.card-pin:hover .overlay {
+  opacity: .5;
+  border: 5px solid #f3f3f3;
+  transition: ease .5s;
+  background-color: #000000;  
+  cursor: zoom-in;
+}
+
+.more {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-transform: uppercase;
+  transform: translate(-20%, -20%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.download {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 20px;
+  text-transform: uppercase;
+  transform: translate(-20%, -20%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.card-pin:hover .card-title {
+  color: #ffffff;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.card-pin:hover .more a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.card-pin:hover .download a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.social {
+	position: relative;
+	transform: translateY(-50%);
+}
+
+.social .fa {
+  margin: 0 3px;
 }
