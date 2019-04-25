@@ -75,7 +75,7 @@ app.get('/logout', function (req, res) {
   res.send("logout success!");
 });
  
-// Get notes endpoint
+// Get creat notes endpoint
 app.get('/notes/create', auth, function (req, res) {
   res.render("create_note");
 });
