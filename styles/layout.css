@@ -19,7 +19,6 @@ nav ul {
   list-style-type: none;
 }
 
-nav li {}
 
 nav a {
   display: block;
@@ -154,3 +153,9 @@ nav a:hover {
 .social .fa {
   margin: 0 3px;
 }
+
+.new-note-container {
+  padding: 20px;
+}
+
+

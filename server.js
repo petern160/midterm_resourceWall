@@ -51,6 +51,7 @@ app.use("/api/users", usersRoutes(knex));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
 app.get('/register', function (req, res) {
   res.render('register')
 })
@@ -75,6 +76,12 @@ app.get('/login', function (req, res) {
   }
 });
  
+// Get creat notes endpoint
+app.get('/notes/create', auth, function (req, res) {
+ res.render("create_note");
+});
+
+
 // Logout endpoint
 app.get('/logout', function (req, res) {
   req.session.destroy();
@@ -89,6 +96,7 @@ app.get('/notes/:postid', auth, function (req, res) {
    .then(data => res.send(data))
   
 });
+
 
 
 // app.get('/notes/:postid', function (req, res) {
@@ -128,5 +136,5 @@ app.post('/register', (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log("Resource wall app listening on port " + PORT);
 });

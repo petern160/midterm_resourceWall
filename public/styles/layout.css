@@ -144,3 +144,7 @@ nav a:hover {
 .social .fa {
   margin: 0 3px;
 }
+
+.new-note-container {
+  padding: 20px;
+}
