@@ -65,7 +65,7 @@ app.get('/login', function (req, res) {
   } else if(req.query.username === "amy" || req.query.password === "amyspassword") {
     req.session.user = "amy";
     req.session.admin = true;
-    res.send("login success!");
+    res.redirect("/");
   }
 });
  
