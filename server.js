@@ -75,6 +75,24 @@ app.get('/login', function (req, res) {
     res.redirect("/");
   }
 });
+
+app.post('/notes/create', function (req, res){
+  if (!req.body.title || !req.body.externalurl || !req.body.img_url) {
+    res.render('invalidField')
+    
+  }else{
+    knex('notes').insert({ 
+      'url': req.body.externalurl ,
+       'img_url': req.body.img_url ,
+       'title': req.body.title,
+      })
+      .then(function(err) {
+              console.log(err);
+            })
+      
+      res.redirect('/');
+  }
+});
  
 // Get creat notes endpoint
 app.get('/notes/create', auth, function (req, res) {
