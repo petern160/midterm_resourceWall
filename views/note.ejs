@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="/styles/new_post.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -15,7 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
     <head>
-        <title>Create Note</title>
+        <title>Note</title>
         <nav>
             <div class="wholeNav">
                 <ul>
@@ -35,52 +34,36 @@
             </div>
       </nav>
     </head>
+
     <body>
         <main>
 
-            <form class='new-note-container'> 
-                <h2> Create new note</h2>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Title</label>
-                    <input type="text" class="form-control" id="note-title" placeholder="Title for new note">
-                </div>
+            <section>
+                <h2 >Create New Note</h2>
+                <form action="/notes/create" method="POST">
+                    <h3> Title </h3>
+                    <textarea name="text" id="note-title"></textarea>
 
-                <!-- <div class="form-group">
-                    <label for="exampleFormControlSelect1">Category</label>
-                    <select class="form-control" id="category-type" placeholder="Select a category">
-                    <option>Movies</option>
-                    <option>Cars</option>
-                    <option>Music</option>
-                    <option>Coding</option>
-                    <option>New Category</option>
-                    </select>
-                </div> -->
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                    <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Category button
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#">Movies</a>
+                              <a class="dropdown-item" href="#">Cars</a>
+                              <a class="dropdown-item" href="#">Coding</a>
+                              <a class="dropdown-item" href="#">New category</a>
+                            </div>
                     </div>
-                    <select class="custom-select" id="category-type">
-                        <option selected>Choose...</option>
-                        <option value="1">Movies</option>
-                        <option value="2">Cars</option>
-                        <option value="3">Music</option>
-                        <option value="4">Coding</option>
-                        <option value="5">New category</option>
-                    </select>
-                </div>
 
-                <div class="form-group">
-                        <label for="exampleFormControlInput1">Image URL</label>
-                        <input type="text" class="form-control" id="note-image" placeholder="Enter image link">
-                </div>
+                    <h3> Image URL</h3>
+                    <textarea name="text" id="note-image"></textarea>
+                    <h3> Link URL</h3>
+                    <textarea name="text" id="note-link"></textarea>
 
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Testing Link URL (textarea)</label>
-                    <textarea class="form-control" id="note-link" rows="2"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Create Note</button>
-            </form>
+                    <input type="submit" value="Post new note">
+                </form>
+            </section>
             
         </main>
 
