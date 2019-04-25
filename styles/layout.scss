@@ -1,3 +1,54 @@
+.wrapper {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  height: 44px;
+  overflow: scroll;
+  background: #323232;
+}
+
+nav ul {
+  display: flex;
+  height: 44px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+nav li {}
+
+nav a {
+  display: block;
+  color: white;
+  font-size: 15px;
+  font-weight: lighter;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #B8B8B8;
+}
+
+.appleNav {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
 .container {
   width: 98%;
 }
