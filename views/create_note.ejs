@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+    <head>
+        <title>Create Note</title>
+        <nav>
+            <div class="wholeNav">
+                <ul>
+                    <li>
+                    <a href="#"><img src="http://www.anasfim.com/p/2018/03/cartoon-notebook-paper-notebook-clipart-lined-paper-pencil-and-in-for-notebook-paper-template-600x600.jpg" height="20"></a>
+                    </li>
+                    <li><a href="/login?username=amy&password=amyspassword">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Favorites</a></li>
+                    <li><a href="#">Account Settings</a></li>
+                    <li><a href="/content">Create Note</a></li>
+                    <li>
+                    <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/search-3-xxl.png" height="20"></a>
+                    </li>
+                    
+                </ul>
+            </div>
+      </nav>
+    </head>
+    <body>
+        <main>
+
+            <section>
+                <h2 >Create New Note</h2>
+                <form action="/notes/create" method="POST">
+                    <h3> Title </h3>
+                    <textarea name="text" id="note-title"></textarea>
+                    <h3> Image URL</h3>
+                    <textarea name="text" id="note-image"></textarea>
+                    <h3> Link URL</h3>
+                    <textarea name="text" id="note-link"></textarea>
+
+                    <input type="submit" value="Post new note">
+                </form>
+            </section>
+            
+        </main>
+
+
+    </body>
+</html>
+
+
+      
+    

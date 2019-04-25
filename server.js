@@ -76,8 +76,8 @@ app.get('/logout', function (req, res) {
 });
  
 // Get notes endpoint
-app.get('/content', auth, function (req, res) {
-  res.render("test");
+app.get('/notes/create', auth, function (req, res) {
+  res.render("create_note");
 });
 
 app.listen(PORT, () => {
