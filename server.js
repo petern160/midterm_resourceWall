@@ -9,6 +9,7 @@ const session     = require('express-session');
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
+var cookieSession = require('cookie-session')
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -27,6 +28,14 @@ app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['test'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
 
 app.use(session({
   secret: '2C44-4D44-WppQ38S',
@@ -49,34 +58,47 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+  
   res.render("index");
 });
 
 app.get('/register', function (req, res) {
   res.render('register')
 })
-
-
-// Authentication and Authorization Middleware
+//
 var auth = function(req, res, next) {
-  if (req.session && req.session.user === "amy" && req.session.admin)
+  console.log(req.session)
+  if (req.session && req.session.userEmail){
+  
     return next();
-  else
+  }else{
     return res.sendStatus(401);
-};
- 
+  }
+ };
+
+
+
+
 // Login endpoint
 app.get('/login', function (req, res) {
-  if (!req.query.username || !req.query.password) {
-    res.send('login failed');    
-  } else if(req.query.username === "amy" || req.query.password === "amyspassword") {
-    req.session.user = "amy";
-    req.session.admin = true;
-    res.redirect("/");
-  }
+res.render('login')
+
+})
+
+app.post('/login', function (req, res){
+  knex.select('email', 'password', 'id').from('users')
+  .then(data => {
+    data.forEach(function(element) {
+      if(req.body.email === element.email && req.body.password === element.password){
+        req.session.userEmail = req.body.email
+        console.log('login success')
+        res.redirect('/')
+      }
+    })
+  })
 });
 
-app.post('/notes/create', function (req, res){
+app.post('/notes/create', auth, function (req, res){
   if (!req.body.title || !req.body.externalurl || !req.body.img_url) {
     res.render('invalidField')
     
@@ -94,8 +116,8 @@ app.post('/notes/create', function (req, res){
   }
 });
  
-// Get creat notes endpoint
-app.get('/notes/create', auth, function (req, res) {
+// Get create notes endpoint
+app.get('/notes/create', auth,  function (req, res) {
  res.render("create_note");
 });
 
@@ -108,12 +130,12 @@ app.get('/logout', function (req, res) {
  
 
 // Get creat notes endpoint
-app.get('/notes/create', auth, function (req, res) {
+app.get('/notes/create',  function (req, res) {
   res.render("create_note");
 });
 
 // Get notes endpoint
-app.get('/notes/:postid', auth, function (req, res) {
+app.get('/notes/:postid',  function (req, res) {
   
   const postid = req.params.postid;
    knex.select('*').from('notes').where({id:postid})
