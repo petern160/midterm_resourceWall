@@ -1,0 +1,12 @@
+ id |                  url                  |                                             img_url                                             |        title         | rating_counter | category_id | user_id 
+----+---------------------------------------+-------------------------------------------------------------------------------------------------+----------------------+----------------+-------------+---------
+  2 | https://www.nba.com                   | https://images-na.ssl-images-amazon.com/images/I/91FOeSuXvIL._SX522_.jpg                        | Basketball           |              3 |           3 |       3
+  1 | https://www.google.ca                 | http://www.hgtv.com/content/dam/images/diy/video/0/01/016/0167/0167023.jpg                      | Cars                 |              4 |           1 |       1
+  3 | https://www.tesla.com                 | https://image.shutterstock.com/image-vector/car-cartoon-sticker-retro-style-260nw-566814880.jpg | Cars                 |              5 |           2 |       2
+  5 | www.freecodecamp.com                  | https://cdn.shopify.com/s/files/1/0051/7692/products/aba-cover-24_160x@3x.png?v=1501539522      | frontend             |                |             |        
+  8 | htttps:www.freecodecamp.com           | https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg       | frontend             |                |             |        
+  9 | www.youtube.com                       | https://kenscourses.com/tc101fall2016/wp-content/uploads/2019/01/test.png                       | this is my test      |                |             |        
+ 10 | https://learnwebcode.com/what-is-css/ | https://cdn.shopify.com/s/files/1/0051/7692/products/ABA-cover-2_100x@3x.png?v=1463456082       | CSS Design           |                |             |        
+ 11 | https://learnwebcode.com/what-is-css/ | https://freefrontend.com/assets/img/html-css-books/Enduring-CSS.png                             | Alice's Design Notes |                |             |        
+(8 rows)
+
