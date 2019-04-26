@@ -58,12 +58,14 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  knex.select('*').from('notes')
+  knex.select('*').from('notes').fullOuterJoin('users', 'notes.user_id', 'users.id')
   .then(data => res.render('index', {
     data: data
   }))
  
 });
+
+
 
 app.get('/register', function (req, res) {
   res.render('register')
@@ -71,7 +73,7 @@ app.get('/register', function (req, res) {
 //user authenticationd helper
 var auth = function(req, res, next) {
   console.log(req.session)
-  if (req.session && req.session.userEmail){
+  if (req.session && req.session.userID){
   
     return next();
   }else{
@@ -91,8 +93,15 @@ app.post('/login', function (req, res){
   .then(data => {
     data.forEach(function(element) {
       if(req.body.email === element.email && req.body.password === element.password){
-        req.session.userEmail = req.body.email
-        req.session.userId = element.id
+        req.session.userID = element.id
+        req.session.firstName = element.first_name
+      //  knex.select('id').from('users').where('email', req.body.email)
+      //  .then( function (userID){
+      //    console.warn(`user table, id result: ${userID}`);
+      //    req.session.userID = userID[0].id
+         
+      //    console.log(req.session.userID)
+      //  });
         console.log('login success')
         res.redirect('/')
       }
@@ -116,11 +125,14 @@ app.post('/notes/create', auth, function (req, res){
       'url': req.body.externalurl ,
        'img_url': req.body.img_url ,
        'title': req.body.title,
+       'rating_counter': 0,
+       'user_id': req.session.userID,
+       'category_id': req.body.category,
       })
       .then(function(err) {
               console.log(err);
             })
-      
+      console.log(req.body)
       res.redirect('/');
   }
 });

@@ -66,14 +66,18 @@
           <form>
             <input type="text" name="search" placeholder="Search..">
           </form>
-          
+         
+         
     <h2><a href="/logout">LOGOUT</a></h2>
     <h2><a href="/content">CREATE A NOTE IF YOU ARE LOGINED</a></h2>
     <ul>
+        
         <% for(var i=0; i < data.length; i++) { %>
+      
           <div class='post-box'>
             <tr>
               <img src='<%= data[i].img_url %>' class='post-img'>
+              <p>first_name is this: <%= data[i].first_name %></p><br>
               <p>ID PK is this: <%= data[i].id %></p><br>
               <p>url is this: <%= data[i].url %></p><br>
               <p>title is this: <%= data[i].title %></p><br>
@@ -81,6 +85,7 @@
               <p>rating is this: <%= data[i].rating_counter %></p><br>
               <p>category is this: <%= data[i].category_id %></p><br>
               <p>user_id FK is this: <%= data[i].user_id %></p><br>
+              
              </tr>    
           </div> 
         <% } %>
