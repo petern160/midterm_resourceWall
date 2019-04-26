@@ -66,12 +66,14 @@
           <form>
             <input type="text" name="search" placeholder="Search..">
           </form>
-          
+         
+         
     <h2><a href="/logout">LOGOUT</a></h2>
     <h2><a href="/content">CREATE A NOTE IF YOU ARE LOGINED</a></h2>
     <ul>
-        <% console.log(data); %>
+        
         <% for(var i=0; i < data.length; i++) { %>
+      
           <div class='post-box'>
             <tr>
               <img src='<%= data[i].img_url %>' class='post-img'>

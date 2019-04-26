@@ -96,6 +96,7 @@ app.post('/login', function (req, res){
     data.forEach(function(element) {
       if(req.body.email === element.email && req.body.password === element.password){
         req.session.userID = element.id
+        req.session.firstName = element.first_name
       //  knex.select('id').from('users').where('email', req.body.email)
       //  .then( function (userID){
       //    console.warn(`user table, id result: ${userID}`);
