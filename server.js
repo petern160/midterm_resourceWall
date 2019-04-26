@@ -102,6 +102,13 @@ app.post('/login', function (req, res){
   })
 });
 
+app.get('/search', function(res, req){
+knex.select('*').from('categories')
+.then(data => res.render('search', {
+  data:data
+}))
+});
+
 app.post('/notes/create', auth, function (req, res){
   if (!req.body.title || !req.body.externalurl || !req.body.img_url) {
     res.render('invalidField')
@@ -140,9 +147,9 @@ app.get('/notes/create',  function (req, res) {
 
 // Get notes endpoint
 app.get('/notes/:postid',  function (req, res) {
-  
+  //i want to look at note id 1 and any comments  associated with notes id 1
   const postid = req.params.postid;
-   knex.select('*').from('notes')
+   knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
    .then(data => res.send(data))
 });
 
