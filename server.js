@@ -58,8 +58,11 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  
-  res.render("index");
+  knex.select('*').from('notes')
+  .then(data => res.render('index', {
+    data: data
+  }))
+ 
 });
 
 app.get('/register', function (req, res) {
@@ -91,6 +94,7 @@ app.post('/login', function (req, res){
     data.forEach(function(element) {
       if(req.body.email === element.email && req.body.password === element.password){
         req.session.userEmail = req.body.email
+        req.session.userId = element.id
         console.log('login success')
         res.redirect('/')
       }
@@ -124,8 +128,8 @@ app.get('/notes/create', auth,  function (req, res) {
 
 // Logout endpoint
 app.get('/logout', function (req, res) {
-  req.session.destroy();
-  res.send("logout success!");
+  res.clearCookie('session')
+  res.redirect('/');
 });
  
 
@@ -138,7 +142,7 @@ app.get('/notes/create',  function (req, res) {
 app.get('/notes/:postid',  function (req, res) {
   
   const postid = req.params.postid;
-   knex.select('*').from('notes').where({id:postid})
+   knex.select('*').from('notes')
    .then(data => res.send(data))
 });
 
@@ -152,9 +156,10 @@ app.get('/notes/:postid',  function (req, res) {
 //   res.send('this is notes/bookmarks/:user_id')
 // }
 
-// app.get('notes/bookmarks/:user_id/:bookmark_id'), function (req, res){
-//   res.send('this is notes/bookmarks + :userid/bookmarks')
-// }
+app.get('notes/bookmarks/:user_id'), function (req, res){
+  knex.select('*').from('bookmarks')
+  .then(data => res.send(data))
+}
 
 // app.get('users/user_id'), function(req,res){
 //   res.send ('eidt profile page')
