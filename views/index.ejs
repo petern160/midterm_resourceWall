@@ -1,419 +1,62 @@
-
 <!DOCTYPE html>
-<html lang="en">
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
+  <html lang="en">
+    
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    
   <head>
-    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
     
-      <nav>
-        <div class="wholeNav">
-          <ul>
-            <li>
-              <a href="/"><img src="http://www.anasfim.com/p/2018/03/cartoon-notebook-paper-notebook-clipart-lined-paper-pencil-and-in-for-notebook-paper-template-600x600.jpg" height="20"></a>
-            </li>
-            <li><a href="/login?username=amy&password=amyspassword">Login</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="#">Favorites</a></li>
-            <li><a href="#">Account Settings</a></li>
-            <li><a href="/notes/create">Create Note</a></li>
-            <li>
-              <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/search-3-xxl.png" height="20"></a>
-            </li>
-            
-          </ul>
-        </div>
-      </nav>
-    
-
-    </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  </head>
+  
   <body>
-      <style> 
-          input[type=text] {
-            width: 130px;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            background-color: white;
-            background-image: url('searchicon.png');
-            background-position: 10px 10px; 
-            background-repeat: no-repeat;
-            padding: 12px 20px 12px 40px;
-            -webkit-transition: width 0.4s ease-in-out;
-            transition: width 0.4s ease-in-out;
-          }
-          
-          input[type=text]:focus {
-            width: 100%;
-          }
-          </style>
-          </head>
-          <body>
-          
-          <p>Animated search form:</p>
-          
-          <form>
-            <input type="text" name="search" placeholder="Search..">
-          </form>
-         
-         
-    <h2><a href="/logout">LOGOUT</a></h2>
-    <h2><a href="/content">CREATE A NOTE IF YOU ARE LOGINED</a></h2>
-    <ul>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">
+              <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="35" height="35" class="d-inline-block align-top" alt="">
+              Resource Wall
+          </a>
+          <!-- <a class="navbar-brand" href="/">Resource Wall</a> -->
+          <!-- when window is small, will toggle the menu button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         
-        <% for(var i=0; i < data.length; i++) { %>
-      
-          <div class='post-box'>
-            <tr>
-              <a href="/notes/:postid">
-              <img src='<%= data[i].img_url %>' class='post-img'>
-              </a>
-              <p>first_name is this: <%= data[i].first_name %></p><br>
-              <p>ID PK is this: <%= data[i].id %></p><br>
-              <p>url is this: <%= data[i].url %></p><br>
-              <p>title is this: <%= data[i].title %></p><br>
-              <p>imgurl is this: <%= data[i].img_url %></p><br>
-              <p>rating is this: <%= data[i].rating_counter %></p><br>
-              <p>category is this: <%= data[i].category_id %></p><br>
-              <p>user_id FK is this: <%= data[i].user_id %></p><br>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
               
-             </tr>    
-          </div> 
-        <% } %>
-    </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Register</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">My Bookmarks</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">User Settings</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Create Note</a>
+              </li>
+             
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+      </nav>
+
+    <h2> Testing Homepage</h2>
+    <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="35" height="35" class="d-inline-block align-top" alt="">
+
   </body>
-  </html>
 
-
-<!--   
- <div class="container">
-   <div class="row">
-   <h4 class="text-uppercase font-weight-bold title">Pinterest Style Layout with Bootstrap 4</h4>
-   </div>
-   <div class="row">
-   <div class="card-columns">
-     <div class="card">
-     <div class="card-body">
-       <div class="row">
-         <div class="col-sm-9 col-xs-9">
-           <h4 class="card-title">Company Name</h4>
-         </div>
-         <div class="col-sm-3 col-xs-3">
-           <img class="img-fluid logo" src="http://placehold.it/50x50?text=LOGO">
-         </div>
-         <div class="col-sm-12">
-           <small class="text-muted">
-             <a href="#!"><strong>landscaping.com</strong></a>
-           </small>
-         </div>
-       </div>
-       <p class="card-text">Elementum augue. Sed penatibus dapibus dignissim! Turpis vut, ut placerat. Parturient! Enim elementum eros pulvinar sit egestas, cras vel odio est adipiscing turpis ridiculus adipiscing magna mattis? Vut integer elit! Nunc quis, augue nec turpis nisi penatibus sociis? Natoque sed.</p>
-       <p class="card-text text-right"><small class="text-muted">
-           <span class="social">
-             <a href="#!">
-               <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-             </a>
-             <a href="#!">
-               <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
-             </a>
-             <a href="#!">
-               <i class="fa fa-pinterest-square fa-2x" aria-hidden="true"></i>
-             </a>
-             <a href="#!">
-               <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
-             </a>
-           </span>          
-       </small></p>
-     </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="http://www.hgtv.com/content/dam/images/diy/video/0/01/016/0167/0167023.jpg" alt="Card image">
-       <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>             
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>                
-       </div>
-     </div>   
-     <div class="card card-pin">
-     <img class="card-img" src="http://robsonlandscapingandturf.com/wp-content/themes/land3/images/sliders/slide3.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="http://www.bloomerslandscaping.net/images/background/bg01.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/736x/dc/d2/e6/dcd2e600de02811e154a352d52cfc4c3--curb-appeal-landscaping-landscaping-design.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="http://www.oclandscaping.net/wp-content/uploads/2012/10/4.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/originals/91/71/de/9171de0fb6f12af8b4390bf382d6bac9.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/736x/75/56/46/755646747ebf14adf7cfe2eec5872317.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/736x/92/44/5c/92445c0db00fb588f7317b9c0669ef79--ideas-for-landscaping-backyards-backyard-landscape-designs.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="http://jimesperlandscaping.com/wp-content/uploads/2013/05/image9.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>      
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/736x/7e/31/62/7e3162429d03990608bb5cc743e649e4--ranch-house-landscaping-landscaping-ideas-for-backyard.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div> 
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/originals/71/7a/e8/717ae8bf9f3ebbb7be435aaffd2ecd0f.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div> 
-     <div class="card card-pin">
-     <img class="card-img" src="http://www.cabbylandscaping.com/images/background/bg05.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div> 
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/736x/1e/60/aa/1e60aa04beed942d94604c71302a5065.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div> 
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/736x/5c/cd/84/5ccd8495371943f1f6a1f31fc85be23e--landscaping-around-trees-backyard-landscaping-ideas-large.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div> 
-     <div class="card card-pin">
-     <img class="card-img" src="http://spectrumlandscapingmn.com/wp-content/uploads/2012/10/spectrum-landscaping2.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="https://i.pinimg.com/736x/54/57/0d/54570de843cad68b85a81865d35d119b--cheap-landscaping-ideas-backyard-ideas.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/320/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-     <div class="card card-pin">
-     <img class="card-img" src="http://www.branumlandscaping.net/images/indexmain.jpg" alt="Card image">
-     <div class="overlay">
-       <h3 class="card-title title">Some Title</h3>
-       <div class="download">
-         <a href="http://lorempixel.com/486/322/" download>
-         <i class="fa fa-download" aria-hidden="true"></i>
-         </a>
-       </div>
-       <div class="more">
-         <a href="#!">
-         <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
-         </a>
-       </div>
-       </div>
-     </div>
-   </div>    
-   </div>
- </div> -->
-
-
-      
-    
+</html>
