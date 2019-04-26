@@ -15,6 +15,11 @@
   
     <head>
         <title>Note</title>
+
+    </head>
+
+    <body>
+        
         <nav>
             <div class="wholeNav">
                 <ul>
@@ -32,37 +37,49 @@
                     
                 </ul>
             </div>
-      </nav>
-    </head>
-
-    <body>
+        </nav>
+        
+        
+        
         <main>
 
-            <section>
-                <h2 >Create New Note</h2>
-                <form action="/notes/create" method="POST">
-                    <h3> Title </h3>
-                    <textarea name="text" id="note-title"></textarea>
+            <section class='note-container'>
+                <h2 >Single Note</h2>
+                <h3 id='note-title'> Title of note: My fav sports car</h3>
+                <h4 id='category-name'> Category name: Cars </h3>
+                <img src='<% data.img_url %>' height=60% width=40% >
+                <span id='user-name'> User name: John Doe</span>
+                <div>
+                    <span id='note-counnter'> counter: 38 pts</span>
+                    <button type="button" id='bookmark-btn'>Bookmark</button>
+                </div>  
 
-                    <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Category button
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Movies</a>
-                              <a class="dropdown-item" href="#">Cars</a>
-                              <a class="dropdown-item" href="#">Coding</a>
-                              <a class="dropdown-item" href="#">New category</a>
-                            </div>
+            </section>
+
+            <section class='comment-container'>
+                <form class='new-comment' method="POST" action="/notes/:note_id/comment"> 
+                    <h2> Comments</h2>
+                    <div class="form-group">
+                        <input type="text" name="comment-text" class="form-control" id="comment-text" placeholder="Add a comment...">
                     </div>
-
-                    <h3> Image URL</h3>
-                    <textarea name="text" id="note-image"></textarea>
-                    <h3> Link URL</h3>
-                    <textarea name="text" id="note-link"></textarea>
-
-                    <input type="submit" value="Post new note">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                
+                <article class='posted-comments'> 
+                    <header class='Pcomment_user_name'> 
+                        <h3> Commenter Name </h3>
+                    </header>
+                    
+                    <section class='Pcomment_text'>
+                        <p> Some text: This is cool post</p>
+                    </section>
+
+                    <footer class='Pcomment_date'>
+                        <p> posted XX days ago</p> 
+                    </footer>
+                </article>
+
+
             </section>
             
         </main>

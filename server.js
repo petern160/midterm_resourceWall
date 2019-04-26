@@ -162,7 +162,9 @@ app.get('/notes/:postid',  function (req, res) {
   //i want to look at note id 1 and any comments  associated with notes id 1
   const postid = req.params.postid;
    knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
-   .then(data => res.send(data))
+   .then(data => res.render('note',{
+     data:data
+   }))
 });
 
 
