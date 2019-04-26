@@ -68,7 +68,7 @@ app.get("/", (req, res) => {
 app.get('/register', function (req, res) {
   res.render('register')
 })
-//
+//user authenticationd helper
 var auth = function(req, res, next) {
   console.log(req.session)
   if (req.session && req.session.userEmail){
@@ -78,8 +78,6 @@ var auth = function(req, res, next) {
     return res.sendStatus(401);
   }
  };
-
-
 
 
 // Login endpoint
@@ -149,10 +147,11 @@ app.get('/notes/create',  function (req, res) {
 app.get('/notes/:postid',  function (req, res) {
   //i want to look at note id 1 and any comments  associated with notes id 1
   const postid = req.params.postid;
-   knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
-   .then(data => res.send(data))
+  knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
+    .then(function(data) {
+      res.render('note');
+   });
 });
-
 
 
 // app.get('/notes/:postid', function (req, res) {
