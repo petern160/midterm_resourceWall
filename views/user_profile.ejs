@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" /> 
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+    
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -14,7 +15,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
     <head>
-        <title>Note</title>
+        <title>User Profile</title>    
+    </head>
+    
+    <body>
         <nav>
             <div class="wholeNav">
                 <ul>
@@ -32,38 +36,9 @@
                     
                 </ul>
             </div>
-      </nav>
-    </head>
-
-    <body>
+        </nav>
         <main>
-
-            <section>
-                <h2 >Create New Note</h2>
-                <form action="/notes/create" method="POST">
-                    <h3> Title </h3>
-                    <textarea name="text" id="note-title"></textarea>
-
-                    <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Category button
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Movies</a>
-                              <a class="dropdown-item" href="#">Cars</a>
-                              <a class="dropdown-item" href="#">Coding</a>
-                              <a class="dropdown-item" href="#">New category</a>
-                            </div>
-                    </div>
-
-                    <h3> Image URL</h3>
-                    <textarea name="text" id="note-image"></textarea>
-                    <h3> Link URL</h3>
-                    <textarea name="text" id="note-link"></textarea>
-
-                    <input type="submit" value="Post new note">
-                </form>
-            </section>
+            <h2> Testing User Profile Page</h2>
             
         </main>
 

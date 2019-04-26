@@ -107,14 +107,8 @@ app.get('/logout', function (req, res) {
 });
  
 
-// Get creat notes endpoint
-app.get('/notes/create', auth, function (req, res) {
-  res.render("create_note");
-});
-
 // Get notes endpoint
 app.get('/notes/:postid', auth, function (req, res) {
-  
   const postid = req.params.postid;
    knex.select('*').from('notes').where({id:postid})
    .then(data => res.send(data))
@@ -134,9 +128,10 @@ app.get('/notes/:postid', auth, function (req, res) {
 //   res.send('this is notes/bookmarks + :userid/bookmarks')
 // }
 
-// app.get('users/user_id'), function(req,res){
-//   res.send ('eidt profile page')
-// }
+// GET - User profile page
+app.get("/users/:user_id", function(req,res){
+  res.render("user_profile");
+});
 
 app.post('/register', (req, res) => {
   if (!req.body.email || !req.body.password) {
