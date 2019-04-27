@@ -53,7 +53,9 @@
                 <span id='user-name'> first_name is this: <%= noteData[0].first_name %></span>
                 <div>
                     <span id='note-counnter'> rating is this: <%= noteData[0].rating_counter %></span>
-                    <button type="button" id='bookmark-btn'>Bookmark</button>
+                    <form method ="POST" action="/notes/<%= noteData[0].id %>" >
+                        <button type="submit" id='bookmark-btn'>Bookmark</button>
+                    </form>
                 </div>  
                 
             </section>

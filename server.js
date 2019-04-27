@@ -58,7 +58,8 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  const query = knex.select('first_name', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id', 'user_id').from('notes').leftJoin('users', 'users.id', 'notes.user_id' )
+  const query = knex.select('first_name', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id', 'user_id')
+  .from('notes').leftJoin('users', 'users.id', 'notes.user_id' )
   console.warn(query.toString())
   query.then(data => {
     console.log(data)
@@ -170,12 +171,8 @@ app.get('/notes/create',  function (req, res) {
 app.get('/notes/:postid',  function (req, res) {
   //i want to look at note id 1 and any comments  associated with notes id 1
   const postid = req.params.postid;
-  // const query = knex.select('first_name', 'url', 'img_url', 'title', 
-  // 'rating_counter', "notes.id", 'category_id', 'user_id')
-  // .from('notes')
-  // .leftJoin('users', 'users.id', 'notes.user_id' )
-  // knex.select('first_name', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id').from('notes').leftJoin('users', 'users.id', 'notes.user_id' )
-   knex.select('title', 'first_name', 'img_url', 'rating_counter', 'url', 'category_id').from('notes')
+
+   knex.select('title', 'first_name', 'img_url', 'rating_counter', 'url', 'category_id', 'notes.id').from('notes')
    .leftJoin('users', 'users.id', 'notes.user_id')
    .leftJoin('comments', 'users.id', 'comments.note_id')
    .where('notes.id', postid)
@@ -193,29 +190,61 @@ app.get('/notes/:postid',  function (req, res) {
     })
 
    })
-  //  knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
+
+   app.post('/notes/:postid', function (req, res) {
+    
+
+    let postId = parseInt(req.params.postid);
+    // console.log(postId);
+    // console.log(typeof postId);
+    
+    knex('bookmarks').insert({
+      user_id: req.session.userID,
+      note_id: postId
+    })
+    .returning('id')
+    .then((id)=>{
+      // console.log("We are good ",id);
+      res.redirect(req.get('referer'))
+    });
+   
+   })
  
    
 });
 
+app.get('/notes/bookmarks/:user_id',  function (req, res) {
+  // select * from bookmarks where user_id = sesssion_id 
+  const user_ID = req.session.userID;
+  knex.select('note_id', 'title', 'bookmarks.user_id', 'img_url', 'rating_counter', 'url', 'users.first_name').from('bookmarks')
+  .leftJoin('notes', 'bookmarks.note_id', 'notes.id')
+  .leftJoin('users', 'bookmarks.user_id', 'users.id')
+  .where('bookmarks.user_id', user_ID)
+  .then((data) => {
+    console.log("Data ",data);
+    if(data.length > 0){
+      //we found records;
+      res.render ('bookmarks', {data})
+    } else {
+      res.render ('bookmarks', {data})
+    }
+    
+  });
+});
 
 
-// app.get('/notes/:postid', function (req, res) {
-//   res.send("this is notes/:postid");
-// });
+app.post('notes/bookmarks/:user_id', (req, res) => {
+  
+  // knex('bookmarks').insert({
+  //   user_id: req.session.userID,
+  //   note_id: req.params.postid,
+  // }).then(data => {
+  //    console.log(data)
+  // })
 
-// app.get('/notes/bookmarks/:user_id'), function (req, res){
-//   res.send('this is notes/bookmarks/:user_id')
-// }
 
-app.get('notes/bookmarks/:user_id'), function (req, res){
-  knex.select('*').from('bookmarks')
-  .then(data => res.send(data))
-}
+})
 
-// app.get('users/user_id'), function(req,res){
-//   res.send ('eidt profile page')
-// }
 
 app.post('/register', (req, res) => {
   if (!req.body.email || !req.body.password) {
