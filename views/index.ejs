@@ -76,11 +76,12 @@
       
           <div class='post-box'>
             <tr>
-              <a href="/notes/:postid">
+              <a href="/notes/<%= data[i].id %>">
               <img src='<%= data[i].img_url %>' class='post-img'>
               </a>
+              
               <p>first_name is this: <%= data[i].first_name %></p><br>
-              <p>ID PK is this: <%= data[i].id %></p><br>
+              <p>ID PK is this: <%= data[i].id%></p><br>
               <p>url is this: <%= data[i].url %></p><br>
               <p>title is this: <%= data[i].title %></p><br>
               <p>imgurl is this: <%= data[i].img_url %></p><br>

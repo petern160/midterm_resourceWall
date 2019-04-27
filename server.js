@@ -58,10 +58,19 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  knex.select('*').from('notes').fullOuterJoin('users', 'notes.user_id', 'users.id')
-  .then(data => res.render('index', {
-    data: data
-  }))
+  const query = knex.select('first_name', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id', 'user_id').from('notes').leftJoin('users', 'users.id', 'notes.user_id' )
+  console.warn(query.toString())
+  query.then(data => {
+    console.log(data)
+    res.render('index',{
+    data:data
+
+
+
+  })
+  
+})
+
  
 });
 
@@ -161,10 +170,32 @@ app.get('/notes/create',  function (req, res) {
 app.get('/notes/:postid',  function (req, res) {
   //i want to look at note id 1 and any comments  associated with notes id 1
   const postid = req.params.postid;
-   knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
-   .then(data => res.render('note',{
-     data:data
-   }))
+  // const query = knex.select('first_name', 'url', 'img_url', 'title', 
+  // 'rating_counter', "notes.id", 'category_id', 'user_id')
+  // .from('notes')
+  // .leftJoin('users', 'users.id', 'notes.user_id' )
+  // knex.select('first_name', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id').from('notes').leftJoin('users', 'users.id', 'notes.user_id' )
+   knex.select('title', 'first_name', 'img_url', 'rating_counter', 'url', 'category_id').from('notes')
+   .leftJoin('users', 'users.id', 'notes.user_id')
+   .leftJoin('comments', 'users.id', 'comments.note_id')
+   .where('notes.id', postid)
+   .then(noteData => {
+     knex.select('*').from('comments')
+     .rightJoin('notes', 'comments.note_id', 'notes.id')
+     .leftJoin('users', 'comments.user_id', 'users.id')
+    //  .leftJoin('users', 'comments.user_id', 'users.id')
+     .where('notes.id', postid)
+     .then(function(data) {
+      console.log(data)
+     res.render('note',{
+          data,
+          noteData,})
+    })
+
+   })
+  //  knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
+ 
+   
 });
 
 
