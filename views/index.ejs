@@ -32,19 +32,19 @@
               <ul class="navbar-nav mr-auto">
                 
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Login</a>
+                  <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Bookmarks</a>
+                    <a class="nav-link" href="/notes/bookmarks/<%= data[0].id %>">My Bookmarks</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">User Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Create Note</a>
+                    <a class="nav-link" href="/notes/create">Create Note</a>
                 </li>
                 
               </ul>
@@ -57,11 +57,32 @@
     </div>
 
     <h2> Testing Homepage</h2>
-    <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="100%" height="100%">
-    <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="100%" height="100%">
-    <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="100%" height="100%">
+    <h2><a href="/logout">LOGOUT</a></h2>
+    <h2><a href="/content">CREATE A NOTE IF YOU ARE LOGINED</a></h2>
+    <ul>
+        
+        <% for(var i=0; i < data.length; i++) { %>
+      
+          <div class='post-box'>
+            <tr>
+              <a href="/notes/<%= data[i].id %>">
+              <img src='<%= data[i].img_url %>' class='post-img'>
+              </a>
+              
+              <p>first_name is this: <%= data[i].first_name %></p><br>
+              <p>ID PK is this: <%= data[i].id%></p><br>
+              <p>url is this: <%= data[i].url %></p><br>
+              <p>title is this: <%= data[i].title %></p><br>
+              <p>imgurl is this: <%= data[i].img_url %></p><br>
+              <p>rating is this: <%= data[i].rating_counter %></p><br>
+              <p>category is this: <%= data[i].category_id %></p><br>
+              <p>user_id FK is this: <%= data[i].user_id %></p><br>
+              
+             </tr>    
+          </div> 
+        <% } %>
+    </ul>
 
   </body>
 
 </html>
-

@@ -1,0 +1,17 @@
+<form method="POST" action="/login">
+    <h1>Bookmarks</h1>
+    <h2>down below are your bookmarks </h2>
+
+    <h1> here are your bookmarks: <%= data[0].first_name %> </h1>
+     
+     <% for(var i=0; i < data.length; i++) { %>
+      
+        <h3> user_id is this: <%= data[i].user_id %> </h3>
+        <h3> note_id is this: <%= data[i].note_id %> </h3>
+        <h3> title is this: <%= data[i].title %> </h3>
+        <h3> url is this: <%= data[i].url %> </h3>
+        <h3> img_url is this: <%= data[i].img_url %> </h3>
+      
+        <% } %>
+
+    </form>
