@@ -90,32 +90,13 @@
 
         </article>
 
-        <article class='single-note'>
-                <header class='note-header'>
-                    <h3> Post title: Awesome picture</h3>
-                </header> 
-                
-                <div class='note-img-wrapper'>
-                    <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="100%" height="100%">
-                </div>
-    
-                <div class="note-creator">
-                    <h4> Creator name: Jon Snow</h4>
-                </div>
-    
-                <footer class='note-footer'>
-            
-                    <div class="btn-group" role="vote-counter" aria-label="vote-counter">
-                        <button type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-up' style='font-size:24px'></i></button>
-                        <button type="button" class="btn btn-secondary" disabled>135 pts</button>
-                        <button type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
-                    </div>
-    
-                    <button type="button" class="btn btn-success bookmark">Bookmark</button>
-                </footer>
-    
+        <article class="new-comment" id="new-comment">
+                <h2 >Compose Comment</h2>
+                <form action="/notes/:note_id" method="POST">
+                  <textarea name="text" id="current-comment" placeholder="Add a comment..."></textarea>
+                  <input type="submit" value="Comment">
+                </form>
         </article>
-
         
         <div name='TESTimage' class='container'>  
             <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="50%" height="50%">

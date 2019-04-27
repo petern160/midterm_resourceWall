@@ -10,7 +10,7 @@
 }
 
 
-
+/* styling for single note */
 .single-note {
     border: 2px solid black;
     padding: 5px;
@@ -20,17 +20,20 @@
 .note-header {
     background-color: rgb(187, 187, 187)
     padding: 5px;
+    border-bottom: 2px solid black;
 }
 
 .note-img-wrapper {
     display: flex;  
     justify-content: center;
     align-items: center;
+    padding: 5px;
 }
 
 .note-creator {
     padding: 5px;
     align-content: center;
+    border-top: 2px solid black;
 }
 
 .note-footer {
@@ -39,7 +42,30 @@
     padding: 5px;
 }
 
-
 .note-footer .bookmark {
     margin-left: auto;
 }
+
+/* styling for creating new comments */
+
+article.new-comment {
+    margin: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+    background: #eee;
+    border-radius: 15px;
+    border: 2px solid black ;
+    width: 500px;
+    max-width: 50%;
+}
+  
+.new-comment h2 {
+border-bottom: 3px solid black;
+}
+
+.new-comment textarea {
+width: 100%;
+padding: 0.5em;
+}
+  
