@@ -1,88 +1,65 @@
-
 <!DOCTYPE html>
-<html lang="en">
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
+  <html lang="en">
+    
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    
+  <head>
+    <meta charset="UTF-8">
+    <title>Note</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" /> 
+  </head>
   
-    <head>
-        <title>Note</title>
-
-    </head>
-
-    <body>
+  <body>
+    <div name='navbar-container' class='container'> 
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="/">
+              <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="35" height="35" class="d-inline-block align-top" alt="">
+              Resource Wall
+          </a>
+          <!-- <a class="navbar-brand" href="/">Resource Wall</a> -->
+          <!-- when window is small, will toggle the menu button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         
-        <nav>
-            <div class="wholeNav">
-                <ul>
-                    <li>
-                    <a href="/"><img src="http://www.anasfim.com/p/2018/03/cartoon-notebook-paper-notebook-clipart-lined-paper-pencil-and-in-for-notebook-paper-template-600x600.jpg" height="20"></a>
-                    </li>
-                    <li><a href="/login?username=amy&password=amyspassword">Login</a></li>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Favorites</a></li>
-                    <li><a href="#">Account Settings</a></li>
-                    <li><a href="/content">Create Note</a></li>
-                    <li>
-                    <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/search-3-xxl.png" height="20"></a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-        
-        
-        
-        <main>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Register</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">My Bookmarks</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">User Settings</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Create Note</a>
+              </li>
+             
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+      </nav>
+    </div>
 
-            <section class='note-container'>
-                <h2 >Single Note</h2>
-                <h3 id='note-title'> Title of note: My fav sports car</h3>
-                <h4 id='category-name'> Category name: Cars </h3>
-                <img src='<% data.img_url %>' height=60% width=40% >
-                <span id='user-name'> User name: John Doe 1</span>
-                <div>
-                    <span id='note-counnter'> counter: 38 pts</span>
-                    <button type="button" id='bookmark-btn'>Bookmark</button>
-                </div>  
-
-            </section>
-
-            <section class='comment-container'>
-                <form class='new-comment' method="POST" action="/notes/:note_id/comment"> 
-                    <h2> Comments</h2>
-                    <div class="form-group">
-                        <input type="text" name="comment-text" class="form-control" id="comment-text" placeholder="Add a comment...">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                
-                <article class='posted-comments'> 
-                    <header class='Pcomment_user_name'> 
-                        <h3> Commenter Name </h3>
-                    </header>
-                    
-                    <section class='Pcomment_text'>
-                        <p> Some text: This is cool post</p>
-                    </section>
-
-                    <footer class='Pcomment_date'>
-                        <p> posted XX days ago</p> 
-                    </footer>
-                </article>
+    <h2> Testing Single Note Page</h2>
+    
 
 
-            </section>
-            
-        </main>
+  </body>
 
-    </body>
 </html>

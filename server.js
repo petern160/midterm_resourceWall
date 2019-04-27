@@ -66,7 +66,7 @@ app.get("/", (req, res) => {
 });
 
 
-
+// Register page
 app.get('/register', function (req, res) {
   res.render('register')
 })
@@ -109,13 +109,15 @@ app.post('/login', function (req, res){
   })
 });
 
+// Search page
 app.get('/search', function(res, req){
-knex.select('*').from('categories')
-.then(data => res.render('search', {
-  data:data
-}))
+  knex.select('*').from('categories')
+  .then(data => res.render('search', {
+    data:data
+  }))
 });
 
+// POST Create note page
 app.post('/notes/create', auth, function (req, res){
   if (!req.body.title || !req.body.externalurl || !req.body.img_url) {
     res.render('invalidField')
@@ -148,22 +150,22 @@ app.get('/logout', function (req, res) {
   res.clearCookie('session')
   res.redirect('/');
 });
+
+// TESTING ONLY: GET single note page, no auth required
+app.get('/notes/:note_id', function (req, res) {
+  res.render("note");
+});
  
 
-// Get creat notes endpoint
-app.get('/notes/create',  function (req, res) {
-  res.render("create_note");
-});
-
-// Get notes endpoint
-app.get('/notes/:postid',  function (req, res) {
-  //i want to look at note id 1 and any comments  associated with notes id 1
-  const postid = req.params.postid;
-   knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
-   .then(data => res.render('note',{
-     data:data
-   }))
-});
+// // GET single note endpoint
+// app.get('/notes/:postid',  function (req, res) {
+//   //i want to look at note id 1 and any comments  associated with notes id 1
+//   const postid = req.params.postid;
+//    knex.select('*').from('notes').leftJoin('comments', 'notes.id', 'comments.note_id').where('notes.id', postid)
+//    .then(data => res.render('note',{
+//      data:data
+//    }))
+// });
 
 
 // app.get('/notes/:postid', function (req, res) {
