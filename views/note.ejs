@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <title>Note</title>
     
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
     <link rel="stylesheet" href="/styles/note.css" type="text/css" />    
@@ -59,6 +60,37 @@
 
     <main class='container'>
         <h2> Testing Single Note Page</h2>
+
+        <article class='single-note'>
+            <header class='note-header'>
+                <h3> Post title: Awesome picture</h3>
+            </header> 
+            
+            <div class='note-img-wrapper'>
+                <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="50%" height="50%">
+            </div>
+
+            <div class="note-creator">
+                <p> Creator name: Jon Snow</p>
+            </div>
+
+            <footer class='note-footer'>
+                <!-- <div class='counter-icons'>
+                    <i class='fas fa-arrow-circle-up' style='font-size:40px;color:rgb(0, 183, 255)'></i>
+                    <span id="counter" class="badge badge-pill badge-info">130 pts</span>
+                    <i class='fas fa-arrow-circle-down' style='font-size:40px;color:rgb(0, 183, 255)'></i>
+                </div> -->
+                <div class="btn-group" role="vote-counter" aria-label="vote-counter">
+                    <button type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-up' style='font-size:24px'></i></button>
+                    <button type="button" class="btn btn-secondary" disabled>135 pts</button>
+                    <button type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
+                </div>
+
+                <button type="button" class="btn btn-success bookmark">Bookmark</button>
+            </footer>
+
+        </article>
+
         
         <div name='TESTimage' class='container'>  
             <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="50%" height="50%">

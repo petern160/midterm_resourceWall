@@ -8,3 +8,51 @@
 .item {
     align-self: center;
 }
+
+
+.single-note {
+    border: 2px solid black;
+}
+
+.note-header {
+    background-color: rgb(187, 187, 187)
+}
+
+.note-img-wrapper {
+    background-color: yellow;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+}
+
+.note-creator {
+    background-color: orange;
+
+}
+
+.note-footer {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.counter-icons {
+    display: flex;
+    align-items: center;
+}
+
+#counter {
+    padding: 1em;
+    margin-left: 5px;
+    margin-right: 5px;
+    opacity: 100%;
+}
+
+#counter:hover {
+    opacity: 50%;
+}
+
+
+.note-footer .bookmark {
+    margin-left: auto;
+}
