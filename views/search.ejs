@@ -1,4 +1,4 @@
-<
+
 <!DOCTYPE html>
 <html lang="en">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -14,46 +14,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
   <head>
-    <title>Home Page</title>
+  </head>
+  <body>
+      <%= console.log(data) %>
+     
+    <h1>search results are below</h1>
+    <% for(var i=0; i < data.length ; i++) { %>
+      
+      <h3> title search term:  <%= data[i].title %> </h3>
+      <h2>first_name is this: <%= data[i].first_name %></h2>
+      <h2>url is this: <%= data[i].url %></h2>
+      <h2>img_url is this: <%= data[i].img_url %></h2>
+      <h2>rating_counter is this: <%= data[i].rating_counter %></h2>
     
-      <nav>
-        <div class="wholeNav">
-          <ul>
-            <li>
-              <a href="/"><img src="http://www.anasfim.com/p/2018/03/cartoon-notebook-paper-notebook-clipart-lined-paper-pencil-and-in-for-notebook-paper-template-600x600.jpg" height="20"></a>
-            </li>
-            <li><a href="/login?username=amy&password=amyspassword">Login</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="#">Favorites</a></li>
-            <li><a href="#">Account Settings</a></li>
-            <li><a href="/notes/create">Create Note</a></li>
-            <li>
-              <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/search-3-xxl.png" height="20"></a>
-            </li>
-            
-         
-          
-    <h2><a href="/logout">LOGOUT</a></h2>
-    <h2><a href="/content">CREATE A NOTE IF YOU ARE LOGINED</a></h2>
-    <ul>
-        <% for(var i=0; i < data.length; i++) { %>
-          <div class='post-box'>
-            <tr>
-              
-              <p>title PK is this: <%= data[0].title %></p><br>
-              <p>info is this: <%= data[i].info %></p><br>
-              <p>id is this: <%= data[i].id %></p><br>
-            
-             </tr>    
-          </div> 
-        <% } %>
-    </ul>
+      <% } %>
   </body>
   </html>
-
-
-
-
-      
-    
->

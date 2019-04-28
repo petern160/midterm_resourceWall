@@ -120,12 +120,37 @@ app.post('/login', function (req, res){
 });
 
 // Search page
-app.get('/search', function(res, req){
-  knex.select('*').from('categories')
-  .then(data => res.render('search', {
-    data:data
-  }))
-});
+app.post('/search', function(req, res){
+  //list search term variable from resquest
+  const searchTerm = req.body.searchWords
+
+  knex.select('first_name', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id', 'user_id')
+  .from('notes').leftJoin('users', 'users.id', 'notes.user_id' )
+  // knex.select('*').from('notes')
+  .where('title', searchTerm)
+  .then( data => {
+      console.log(data.length);
+      if(data.length === 0){
+      res.send('error search not found')
+      }else{
+      res.render('search', {data:data})
+      }
+  })
+})
+
+
+// Search page
+app.get('/search', function(req, res){
+  // const searchTerm = req.body.data
+  // console.log('this is search temr', searchTerm)
+  // knex.select('title').from('notes')
+  // .where('title', searchTerm)
+  // .then( data => {
+  //   res.render('search', {data:searchTerm})
+   
+  // })
+  
+})
 
 // POST Create note page
 app.post('/notes/create', auth, function (req, res){
