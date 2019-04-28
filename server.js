@@ -127,7 +127,7 @@ app.post('/search', function(req, res){
   knex.select('first_name', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id', 'user_id')
   .from('notes').leftJoin('users', 'users.id', 'notes.user_id' )
   // knex.select('*').from('notes')
-  .where('title', searchTerm)
+  .where('category_id', searchTerm)
   .then( data => {
       console.log(data.length);
       if(data.length === 0){
