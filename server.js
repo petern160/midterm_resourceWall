@@ -185,6 +185,28 @@ app.get('/notes/:postid',  function (req, res) {
 
    })
 
+   
+    app.post('/notes/:postid/up', function(req, res){
+      const urlID = req.params.postid;
+      knex.select('rating_counter').from('notes')
+      .where({id: urlID})
+      .increment('rating_counter', 1)
+      .then(data =>{
+        res.send('hello')
+    })
+  })
+
+    app.post('/notes/:postid/down', function(req, res){
+      const urlID = req.params.postid;
+      knex.select('rating_counter').from('notes')
+      .where({id: urlID})
+      .decrement('rating_counter', 1)
+      .then(data =>{
+        res.send('scammed')
+      })
+      
+    })
+
    app.post('/notes/:postid', function (req, res) {
     
 
@@ -204,6 +226,24 @@ app.get('/notes/:postid',  function (req, res) {
    
    })
  
+   app.post('/notes/:postid/comment', function (req, res) {
+    
+    let postId = req.params.postid;
+    // console.log(postId);
+    // console.log(typeof postId);
+    
+    knex('comments').insert({
+      user_id: req.session.userID,
+      note_id: postId,
+      create_date: new Date(),
+      comments: req.body.comment_text,
+    })
+    .returning(['create_date', 'comments'])
+    .then((commentData)=>{
+      // console.log("We are good ",id);
+      res.redirect(req.get('referer'))
+    });
+   })
    
 });
  
