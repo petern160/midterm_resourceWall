@@ -1,92 +1,120 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
-  <head>
-    <title>Home Page</title>
-    
-      <nav>
-        <div class="wholeNav">
-          <ul>
-            <li>
-              <a href="/"><img src="http://www.anasfim.com/p/2018/03/cartoon-notebook-paper-notebook-clipart-lined-paper-pencil-and-in-for-notebook-paper-template-600x600.jpg" height="20"></a>
-            </li>
-            <li><a href="/login?username=amy&password=amyspassword">Login</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="#">Favorites</a></li>
-            <li><a href="#">Account Settings</a></li>
-            <li><a href="/notes/create">Create Note</a></li>
-            <li>
-              <a href="#"><img src="https://www.iconsdb.com/icons/preview/white/search-3-xxl.png" height="20"></a>
-            </li>
-            
-          </ul>
-        </div>
-      </nav>
-    
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/note.js"></script>
 
-    </head>
-  <body>
-      <style> 
-          input[type=text] {
-            width: 130px;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            background-color: white;
-            background-image: url('searchicon.png');
-            background-position: 10px 10px; 
-            background-repeat: no-repeat;
-            padding: 12px 20px 12px 40px;
-            -webkit-transition: width 0.4s ease-in-out;
-            transition: width 0.4s ease-in-out;
-          }
+  
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+  
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />    
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/note.css" type="text/css" />    
+</head>
+
+<body>
+    <div name='navbar-container' class='container'> 
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">
+                <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="35" height="35" class="d-inline-block align-top" alt="">
+                Resource Wall
+            </a>
+            <!-- when window is small, will toggle the menu button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
           
-          input[type=text]:focus {
-            width: 100%;
-          }
-          </style>
-          </head>
-          <body>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/notes/bookmarks/<%= data[0].id %>">My Bookmarks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">User Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/notes/create">Create Note</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                
+              </ul>
+              <form class="form-inline my-2 my-lg-0" method="POST" action="/search">
+                <input name="searchWords" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+        </nav>
+    </div>
+
+  <main class='container'>
+      <h2> Search Result for: <%= data[0].title %> </h2>
+
+      <article class='single-note'>
+          <header class='note-header'>
+              <h3> <%= data[0].title %></h3> 
+          </header> 
           
-          <p>Animated search form:</p>
-          
-          <form>
-            <input type="text" name="search" placeholder="Search..">
-          </form>
-          
-    <h2><a href="/logout">LOGOUT</a></h2>
-    <h2><a href="/content">CREATE A NOTE IF YOU ARE LOGINED</a></h2>
-    <ul>
-        <% for(var i=0; i < data.length; i++) { %>
-          <div class='post-box'>
-            <tr>
-              
-              <p>title PK is this: <%= data[i].title %></p><br>
-              <p>info is this: <%= data[i].info %></p><br>
-              <p>id is this: <%= data[i].id %></p><br>
-            
-             </tr>    
-          </div> 
-        <% } %>
-    </ul>
-  </body>
-  </html>
+          <a href="http://localhost:8080/notes/<%= data[0].id %>"> 
+              <div class='note-img-wrapper'>
+                  <img src="<%= data[0].img_url %>" width="60%" height="60%">
+              </div>
+          </a>
 
+          <div class="note-creator">
+              <h4> <%= data[0].first_name %> </h4>
+          </div>
 
-
-
+          <footer class='note-footer'>
       
-    
+              <div class="btn-group" role="vote-counter" aria-label="vote-counter">
+                  <button id='rating-up' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-up' style='font-size:24px'></i></button>
+                  <button id='rating-counter' type="button" class="btn btn-secondary" disabled><%= data[0].rating_counter %></button>
+                  <button id='rating-down' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
+              </div>
+              <form method ="POST" action="/notes/<%= data[0].id %>" class='bookmark'>
+              <button id='bookmark-btn' type="submit" class="btn btn-success">Bookmark</button>
+              </form>
+          </footer>
+
+      </article>
+      
+      
+      <div name='TESTimage' class='container'>  
+          <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="50%" height="50%">
+      </div>
+
+  </main>
+</body>
+
+</html>
+
+  <!-- <%= console.log(data) %>
+ 
+<h1>search results are below</h1>
+<% for(var i=0; i < data.length ; i++) { %>
+  
+  <h3> title search term:  <%= data[i].title %> </h3>
+  <h2>first_name is this: <%= data[i].first_name %></h2>
+  <h2>url is this: <%= data[i].url %></h2>
+  <h2>img_url is this: <%= data[i].img_url %></h2>
+  <h2>rating_counter is this: <%= data[i].rating_counter %></h2>
+
+  <% } %> -->

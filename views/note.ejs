@@ -36,19 +36,19 @@
             <ul class="navbar-nav mr-auto">
               
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="#">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register">Register</a>
+                    <a class="nav-link" href="#">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/notes/bookmarks/<%= data[0].id %>">My Bookmarks</a>
+                    <a class="nav-link" href="#">My Bookmarks</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">User Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/notes/create">Create Note</a>
+                    <a class="nav-link" href="#">Create Note</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
@@ -68,7 +68,6 @@
 
         <article class='single-note'>
             <header class='note-header'>
-                <!-- <h3> Post title: Awesome picture</h3> -->
                 <h3> <%= noteData[0].title %></h3> 
             </header> 
             
@@ -79,7 +78,6 @@
             </a>
 
             <div class="note-creator">
-                <!-- <h4> Creator name: Jon Snow</h4> -->
                 <h4> <%= noteData[0].first_name %> </h4>
             </div>
 
@@ -90,8 +88,9 @@
                     <button id='rating-counter' type="button" class="btn btn-secondary" disabled><%= noteData[0].rating_counter %></button>
                     <button id='rating-down' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
                 </div>
-
-                <button id='bookmark-btn' type="button" class="btn btn-success bookmark">Bookmark</button>
+                <form method ="POST" action="/notes/<%= noteData[0].id %>"  class='bookmark'>
+                <button id='bookmark-btn' type="submit" class="btn btn-success">Bookmark</button>
+                </form>
             </footer>
 
         </article>
