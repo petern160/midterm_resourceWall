@@ -1,24 +1,13 @@
-$(() => {
-  
-  
-  function createNotes (noteData){
-    let title = noteData.title
-    let url = noteData.url
-    let img_url = noteData.img_url
+$(function() {
+  $('#demo').likeDislike({
 
-    console.log(noteData)
-  }
-
-  $.ajax({
-    method: "GET",
-    url: "/",
-  }).done((data) => {
-    for(var user of data) {
-      console.log(user)
-      // $("<div>").text(user.name).appendTo($("container"));
-      createNotes(user)
+    // update like / dislike counters
+    click: function (btnType, likes, dislikes, event) {
+        var likesElem = $(this).find('.likes');
+        var dislikedsElem = $(this).find('.dislikes');
+        likesElem.text(parseInt(likesElem.text()) + likes);
+        dislikedsElem.text(parseInt(dislikedsElem.text()) + dislikes);
     }
-  });;
+    
+  });
 });
-
-

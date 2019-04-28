@@ -227,7 +227,17 @@ app.get('/notes/:postid',  function (req, res) {
     });
    
    })
- 
+ app.post('/notes/:postid/up', function (req, res){
+  let postId = parseInt(req.params.postid);
+  knex.select('rating_counter')
+  .from('notes')
+  .where({id : postId})
+  .increment('rating_counter', 1)
+  .then(data => {
+    res.render('note', {data:data})
+  })
+  
+ })
    
 });
  
