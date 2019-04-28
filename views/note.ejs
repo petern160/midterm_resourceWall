@@ -5,7 +5,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
+    <script type="text/javascript" src="/scripts/note.js"></script>
+
     
   <head>
     <meta charset="UTF-8">
@@ -64,28 +66,30 @@
 
         <article class='single-note'>
             <header class='note-header'>
-                <h3> Post title: Awesome picture</h3>
+                <!-- <h3> Post title: Awesome picture</h3> -->
+                <h3> <%= noteData[0].title %></h3> 
             </header> 
             
-            <a href="https://www.example.com"> 
+            <a href="<%= noteData[0].url %>"> 
                 <div class='note-img-wrapper'>
-                    <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="50%" height="50%">
+                    <img src="<%= noteData[0].img_url %>" width="50%" height="50%">
                 </div>
             </a>
 
             <div class="note-creator">
-                <h4> Creator name: Jon Snow</h4>
+                <!-- <h4> Creator name: Jon Snow</h4> -->
+                <h4> <%= noteData[0].first_name %> </h4>
             </div>
 
             <footer class='note-footer'>
         
                 <div class="btn-group" role="vote-counter" aria-label="vote-counter">
-                    <button type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-up' style='font-size:24px'></i></button>
-                    <button type="button" class="btn btn-secondary" disabled>135 pts</button>
-                    <button type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
+                    <button id='rating-up' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-up' style='font-size:24px'></i></button>
+                    <button id='rating-counter' type="button" class="btn btn-secondary" disabled>135 pts</button>
+                    <button id='rating-down' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
                 </div>
 
-                <button type="button" class="btn btn-success bookmark">Bookmark</button>
+                <button id='bookmark-btn' type="button" class="btn btn-success bookmark">Bookmark</button>
             </footer>
 
         </article>
@@ -99,76 +103,28 @@
                 </form>
         </article>
         
-
         <!-- Posted comments box -->
+        <% for(var i=0; i < data.length ; i++) { %>
+
         <article class='posted-comment'>
             <header class='Pcomment-header'>
-                <h2 class='Pcomment-name'> Commenter name</h2>
+                <h2 class='Pcomment-name'> <%= data[i].first_name %> </h2>
             </header>
 
             <section class='Pcomment-body'> 
-                <p> Some random comments here. LOLOL</p>
+                <p> <%= data[i].comments %> </p>
             </section>
 
             <footer class='Pcomment-footer'>
-                <p> Posted on March 10, 2019</p>
+                <p> Posted <%= data[i].create_date.toString().slice(4,15) %> </p>
             </footer>
 
         </article>
+        <% } %>
         
         <div name='TESTimage' class='container'>  
             <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="50%" height="50%">
         </div>
-
-<!-- START OF PETERS CODE -->
-        <% console.log(noteData[0]) %>
-        <section class='note-container'>
-            <h2 >Single Note</h2>
-            <h3 id='note-title'><%= noteData[0].title || '' %></h3>
-            <h4 id='category-name'>category is this: <%= noteData[0].category_id %> </h3>
-            <img src='<%= noteData[0].img_url %>'height="50" width="50" class='post-img'>
-            <span id='user-name'> first_name is this: <%= noteData[0].first_name %></span>
-            <div>
-                <span id='note-counnter'> rating is this: <%= noteData[0].rating_counter %></span>
-                <form method ="POST" action="/notes/<%= noteData[0].id %>" >
-                    <button type="submit" id='bookmark-btn'>Bookmark</button>
-                </form>
-            </div>  
-            
-        </section>
-
-
-       
-        <section class='comment-container'>
-            <form class='new-comment' method="POST" action="/notes/:note_id/comment"> 
-                <h2> Comments</h2>
-                <div class="form-group">
-                    <input type="text" name="comment-text" class="form-control" id="comment-text" placeholder="Add a comment...">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <% for(var i=0; i < data.length ; i++) { %>
-                
-            <article class='posted-comments'> 
-                <header class='Pcomment_user_name'> 
-                    <h3> commenter name <%= data[i].first_name %> </h3>
-                </header>
-                
-                <section class='Pcomment_text'>
-                    <p> Some text: <%= data[i].comments %></p>
-                </section>
-
-                <footer class='Pcomment_date'>
-                    <p> comment created at this time: <%= data[i].create_date %></p> 
-                </footer>
-            </article>
-
-          </section>
-            
-          <% } %>
-
-          <!-- END OF PETERS CODE -->
-        
 
     </main>
   </body>
