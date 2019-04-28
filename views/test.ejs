@@ -1,23 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home Page</title>
-
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
-
-  <body>
-    <h1>CONTENTTTTT</h1>
-    <button>save</button>
+  <html lang="en">
     
-    <textarea class="TextArea__textArea TextArea__bold TextArea__light TextArea__enabled TextArea__large TextArea__wrap" id="pin-draft-title" placeholder="Add your title" rows="1" style="height: 43px;"></textarea>
-    <h2><a href="/login?username=amy&password=amyspassword">LOGIN</a></h2>
-    <h2><a href="/logout">LOGOUT</a></h2>
-    <h2><a href="/content">CREATE A NOTE IF YOU ARE LOGINED</a></h2>
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/note.js"></script>
+
+    
+  <head>
+    <meta charset="UTF-8">
+    <title>TESTING title</title>
+    
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />    
+    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/note.css" type="text/css" />    
+  </head>
+  
+  <body>
+      <div name='navbar-container' class='container'> 
+          <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+              <a class="navbar-brand" href="/">
+                  <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="35" height="35" class="d-inline-block align-top" alt="">
+                  Resource Wall
+              </a>
+              <!-- when window is small, will toggle the menu button -->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Register</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/notes/bookmarks/<%= data[0].id %>">My Bookmarks</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">User Settings</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/notes/create">Create Note</a>
+                  </li>
+                  
+                </ul>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="/search">
+                  <input name="searchWords" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+          </nav>
+      </div>
+
+    <main class='container'>
+        <h2> Testing Page</h2>
+
+        <article class='single-note'>
+            <header class='note-header'>
+                <!-- <h3> Post title: Awesome picture</h3> -->
+                <h3> <%= noteData[0].title %></h3> 
+            </header> 
+            
+            <a href="<%= noteData[0].url %>"> 
+                <div class='note-img-wrapper'>
+                    <img src="<%= noteData[0].img_url %>" width="50%" height="50%">
+                </div>
+            </a>
+
+            <div class="note-creator">
+                <!-- <h4> Creator name: Jon Snow</h4> -->
+                <h4> <%= noteData[0].first_name %> </h4>
+            </div>
+
+            <footer class='note-footer'>
+        
+                <div class="btn-group" role="vote-counter" aria-label="vote-counter">
+                    <button id='rating-up' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-up' style='font-size:24px'></i></button>
+                    <button id='rating-counter' type="button" class="btn btn-secondary" disabled><%= noteData[0].rating_counter %></button>
+                    <button id='rating-down' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
+                </div>
+                <form method ="POST" action="/notes/<%= noteData[0].id %>" >
+                <button id='bookmark-btn' type="submit" class="btn btn-success bookmark">Bookmark</button>
+                </form>
+            </footer>
+
+        </article>
+        
+        <!-- add comment box -->
+        <article class="new-comment" id="new-comment">
+                <h2 >Compose Comment</h2>
+                <form  id='new-comment-form' action="/notes/<%= noteData[0].id %>/comment" method="POST">
+                  <textarea name="comment_text" id="current-comment" placeholder="Add a comment..."></textarea>
+                  <input type="submit" id="comment-submit" value="Comment">
+                </form>
+        </article>
+        
+        <!-- Posted comments box -->
+        <% for(var i=0; i < data.length ; i++) { %>
+
+        <article class='posted-comment'>
+            <header class='Pcomment-header'>
+                <h2 class='Pcomment-name'> <%= data[i].first_name %> </h2>
+            </header>
+
+            <section class='Pcomment-body'> 
+                <p> <%= data[i].comments %> </p>
+            </section>
+
+            <footer class='Pcomment-footer'>
+                <p> Posted <%= data[i].create_date %> </p>
+            </footer>
+
+        </article>
+        <% } %>
+        
+        <div name='TESTimage' class='container'>  
+            <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="50%" height="50%">
+        </div>
+
+    </main>
   </body>
+
 </html>
+
