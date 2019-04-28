@@ -13,7 +13,7 @@
   
 <head>
   <meta charset="UTF-8">
-  <title>Note</title>
+  <title>My Bookmarks</title>
   
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -23,6 +23,7 @@
 </head>
 
 <body>
+
     <div name='navbar-container' class='container'> 
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/">
@@ -34,91 +35,36 @@
               <span class="navbar-toggler-icon"></span>
             </button>
           
-          <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-          <link rel="stylesheet" href="/styles/layout.css" type="text/css" />    
-          <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
-          <link rel="stylesheet" href="/styles/note.css" type="text/css" />    
-        </head>
-        
-        <body>
-          <div name='navbar-container' class='container'> 
-            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="/">
-                    <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="35" height="35" class="d-inline-block align-top" alt="">
-                    Resource Wall
-                </a>
-                <!-- <a class="navbar-brand" href="/">Resource Wall</a> -->
-                <!-- when window is small, will toggle the menu button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">My Bookmarks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">User Settings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Create Note</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                   
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
-                </div>
-            </nav>
-          </div>
-         
-          <main class='container'>
-                <h1> here are your bookmarks: <%= data[0].first_name %> </h1>
-                <% for(var i=0; i < data.length; i++) { %>
-      
-              <article class='single-note'>
-                  <header class='note-header'>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
                 
-                  <li class="nav-item">
-                      <a class="nav-link" href="/login">Login</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/register">Register</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/notes/bookmarks/">My Bookmarks</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">User Settings</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/notes/create">Create Note</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/logout">Logout</a>
-                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/notes/bookmarks/<%= data[0].id %>">My Bookmarks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">User Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/notes/create">Create Note</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
                 
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <form class="form-inline my-2 my-lg-0" method="POST" action="/search">
+                <input name="searchWords" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             </div>
         </nav>
-      </div>
+    </div>
   
   <main class='container'>
         <h1> here are your bookmarks: <%= data[0].first_name %> </h1>
@@ -141,10 +87,10 @@
               
           </div>
 
-          <% } %>
-
-      </article>
-      
+          
+        </article>
+        
+        <% } %>
       
 
   </main>
