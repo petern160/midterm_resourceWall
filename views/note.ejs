@@ -88,8 +88,9 @@
                     <button id='rating-counter' type="button" class="btn btn-secondary" disabled><%= noteData[0].rating_counter %></button>
                     <button id='rating-down' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
                 </div>
-
-                <button id='bookmark-btn' type="button" class="btn btn-success bookmark">Bookmark</button>
+                <form method ="POST" action="/notes/<%= noteData[0].id %>" >
+                <button id='bookmark-btn' type="submit" class="btn btn-success bookmark">Bookmark</button>
+                </form>
             </footer>
 
         </article>

@@ -211,8 +211,8 @@ app.get('/notes/:postid',  function (req, res) {
     
 
     let postId = parseInt(req.params.postid);
-    // console.log(postId);
-    // console.log(typeof postId);
+    console.log(postId);
+    console.log(typeof postId);
     
     knex('bookmarks').insert({
       user_id: req.session.userID,
@@ -220,7 +220,6 @@ app.get('/notes/:postid',  function (req, res) {
     })
     .returning('id')
     .then((id)=>{
-      // console.log("We are good ",id);
       res.redirect(req.get('referer'))
     });
    
