@@ -58,7 +58,7 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  const query = knex.select('first_name', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id', 'user_id')
+  const query = knex.select('first_name','note_info', 'url', 'img_url', 'title', 'rating_counter', "notes.id", 'category_id', 'user_id')
   .from('notes').leftJoin('users', 'users.id', 'notes.user_id' )
   console.warn(query.toString())
   query.then(data => {
@@ -165,6 +165,7 @@ app.post('/notes/create', auth, function (req, res){
        'rating_counter': 0,
        'user_id': req.session.userID,
        'category_id': req.body.category,
+       'note_info' : req.body.note_info,
       })
       .then(function(err) {
               console.log(err);

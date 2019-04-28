@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
         table.string('url', 255)
         table.string('img_url', 255)
         table.string('title')
+        table.string('note_info', 255)
         table.integer('rating_counter')
       });
 };
