@@ -13,6 +13,8 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/navbar.css" type="text/css" /> 
+    <link rel="stylesheet" href="/styles/new-index.css" type="text/css" /> 
+
   </head>
   
   <body>
@@ -58,10 +60,7 @@
         </nav>
     </div>
 
-    <h2> Testing Homepage</h2>
-    <h2><a href="/logout">LOGOUT</a></h2>
-    <h2><a href="/content">CREATE A NOTE IF YOU ARE LOGINED</a></h2>
-    <ul>
+    <!-- <ul>
         
         <% for(var i=0; i < data.length; i++) { %>
       
@@ -84,7 +83,133 @@
              </tr>    
           </div> 
         <% } %>
-    </ul>
+    </ul> -->
+    
+    <!--START OF CUSTOM BOX ELEMENTS  -->
+    <div class="container">
+        <div class="row">
+            <h1 class="text-uppercase font-weight-bold title">Kanye Wall of Fame </h4>
+        </div>
+        <div class="row">
+            <div class="card-columns">
+              <!-- first intro box element -->
+            <div class="card">
+                <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-9 col-xs-9">
+                    <h4 class="card-title">Note Resource Wall</h4>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                    <img class="img-fluid logo" src="https://ya-webdesign.com/images/notepad-icon-png.png">
+                    </div>
+                    <div class="col-sm-12">
+                    <small class="text-muted">
+                    <a href="#!"><strong>www.noteresourcewall.com</strong></a>
+                    </small>
+                    </div>
+                </div>
+                <p class="card-text">Elementum augue. Sed penatibus dapibus dignissim! Turpis vut, ut placerat. Parturient! Enim elementum eros pulvinar sit egestas, cras vel odio est adipiscing turpis ridiculus adipiscing magna mattis? Vut integer elit! Nunc quis, augue nec turpis
+                    nisi penatibus sociis? Natoque sed.</p>
+                <p class="card-text text-right"><small class="text-muted">
+                    <span class="social">
+                    <a href="#!">
+                        <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+                    </a>
+                    <a href="#!">
+                        <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                    </a>
+                    <a href="#!">
+                        <i class="fa fa-pinterest-square fa-2x" aria-hidden="true"></i>
+                    </a>
+                    <a href="#!">
+                        <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                    </a>
+                    </span>          
+                    </small></p>
+                </div>
+            </div>
+            <!-- end of first intro box -->
+            
+            <!-- START OF DB POSTS -->
+            <% for(var i=0; i < data.length; i++) { %>
+            <div class="card card-pin">
+              <a href="/notes/<%= data[i].id %>">   
+              <img class="card-img" src="<%= data[i].img_url %>" alt="Card image">
+                <div class="overlay">
+                  <h3 class="card-title title"><%= data[i].title %></h3>
+                  <div class="counter">
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <%= data[i].rating_counter %> pts
+                  </div>
+                  <div class="creator">
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> By <%= data[i].first_name %>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <% } %>
+            <!-- END OF DATABASE POSTS -->
+
+            <!-- start of single post -->
+            <div class="card card-pin">
+      
+                <img class="card-img" src="https://dazedimg-dazedgroup.netdna-ssl.com/900/azure/dazed-prod/1150/9/1159008.jpg" alt="Card image">
+                <div class="overlay">
+                <h3 class="card-title title">Some Title</h3>
+                <div class="download">
+                    <a href="http://lorempixel.com/486/320/" download>
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </a>
+                </div>
+                <div class="counter">
+                    <a href="#!">
+                            <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
+                        </a>
+                </div>
+                </div>
+            </div>
+            <!-- end of single posty -->
+            
+            <!-- start of single post -->
+            <div class="card card-pin">
+                <img class="card-img" src="https://dazedimg-dazedgroup.netdna-ssl.com/900/azure/dazed-prod/1150/9/1159008.jpg" alt="Card image">
+                <div class="overlay">
+                <h3 class="card-title title">How not to Garden</h3>
+                <div class="download">
+                    <a href="http://lorempixel.com/486/320/" download>
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </a>
+                </div>
+                <div class="counter">
+                    <a href="#!">
+                            <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
+                        </a>
+                </div>
+                </div>
+            </div>
+            <!-- end of single posty -->
+            
+            <div class="card card-pin">
+                <img class="card-img" src="https://i.pinimg.com/736x/5c/cd/84/5ccd8495371943f1f6a1f31fc85be23e--landscaping-around-trees-backyard-landscaping-ideas-large.jpg" alt="Card image">
+                <div class="overlay">
+                <h3 class="card-title title">Why flowers are good</h3>
+                <div class="download">
+                    <a href="http://lorempixel.com/486/320/" download>
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </a>
+                </div>
+                <div class="counter">
+                    <a href="#!">
+                            <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> More
+                        </a>
+                </div>
+                </div>
+            </div>
+            
+ 
+            <!-- end of all cards-->
+            </div>
+        </div>
+    </div>
 
   </body>
 

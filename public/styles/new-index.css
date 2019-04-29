@@ -1,0 +1,121 @@
+
+/* Styling for new homepage */
+.container {
+    width: 98%;
+}
+  
+.logo {
+border-radius: 50%;
+}
+
+.text-muted a {
+color: #989898;
+}
+
+.text-muted a:hover {
+color: grey;
+}
+
+.fa a:active, a:hover, a:visited {
+text-decoration: none;
+}
+
+/* Tool Colors */
+.general {
+background-color: #0095af;
+}
+
+.general .card-title {
+color: #f3f3f3;
+}
+
+.general .card-text {
+color: #f3f3f3;
+}
+
+.card-img {
+display: block;
+width: 100%;
+height: auto;
+}
+
+.overlay {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+height: 100%;
+width: 100%;
+opacity: 0;
+transition: .2s ease;
+background-color: #008CBA;
+}
+
+.card-pin:hover .overlay {
+opacity: .7;
+border: 5px solid #f3f3f3;
+transition: ease .5s;
+background-color: rgb(82, 10, 10);  
+/* cursor: zoom-in; */
+}
+
+.counter {
+color: white;
+font-size: 24px;
+position: absolute;
+bottom: 0;
+right: 0;
+text-transform: uppercase;
+transform: translate(-20%, -20%);
+-ms-transform: translate(-50%, -50%);
+}
+
+.creator {
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-transform: uppercase;
+    /* transform: translate(-20%, -20%);
+    -ms-transform: translate(-50%, -50%); */
+}
+
+.download {
+color: white;
+font-size: 20px;
+position: absolute;
+bottom: 0;
+left: 0;
+margin-left: 20px;
+text-transform: uppercase;
+transform: translate(-20%, -20%);
+-ms-transform: translate(-50%, -50%);
+}
+
+.card-pin:hover .card-title {
+color: #ffffff;
+margin-top: 10px;
+text-align: center;
+font-size: 1.5em;
+}
+
+.card-pin:hover .more a {
+text-decoration: none;
+color: #ffffff;
+}
+
+.card-pin:hover .download a {
+text-decoration: none;
+color: #ffffff;
+}
+
+.social {
+    position: relative;
+    transform: translateY(-50%);
+}
+
+.social .fa {
+margin: 0 3px;
+}
