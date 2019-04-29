@@ -3,13 +3,13 @@ exports.seed = function(knex, Promise) {
       .then(function () {
         return Promise.all([
 
-          knex('notes').insert({ title: 'Basketball', url: 'https://www.nba.com', 
-          img_url: 'https://images-na.ssl-images-amazon.com/images/I/91FOeSuXvIL._SX522_.jpg', 
-          rating_counter: 3, user_id: 2, category_id: 2, note_info:'Lebron James is my friend'}),
+          knex('notes').insert({ title: 'Kanye in the Wild', url: 'https://cheezburger.com/407301/here-are-those-kanyelink-gifs-you-were-trying-to-find', 
+          img_url: 'https://i.chzbgr.com/full/8461320704/h7A7BD4C9/', 
+          rating_counter: 3, user_id: 2, category_id: 2, note_info:'The power of the Tri force is strong'}),
 
-          knex('notes').insert({ title: 'Cars', url: 'https://www.tesla.com',
-          img_url: 'https://image.shutterstock.com/image-vector/car-cartoon-sticker-retro-style-260nw-566814880.jpg',
-          rating_counter: 5, user_id: 3, category_id: 3, note_info: 'I love this red car'}),
+          knex('notes').insert({ title: 'Kanye and Lil Pump', url: 'https://giphy.com/explore/lil-pump-kanye-west',
+          img_url: 'https://media1.giphy.com/media/fVbgexEL8sxRsOQRdI/giphy.gif',
+          rating_counter: 5, user_id: 3, category_id: 3, note_info: 'I hear you like memes, you should click on the image :)'}),
 
           knex('notes').insert({ title: 'kanye', url: 'https://www.youtube.com/watch?v=SXmuU9KESpo', 
           img_url: 'https://media1.giphy.com/media/9Xh1CGm4Hzo4g/giphy.gif', 
@@ -77,7 +77,15 @@ exports.seed = function(knex, Promise) {
 
           knex('notes').insert({ title: 'kanye', url: 'https://www.youtube.com/watch?v=SXmuU9KESpo', 
           img_url: 'http://www.z90.com/wp-content/uploads/2017/08/Screen-Shot-2017-08-08-at-10.12.12-AM.png', 
-          rating_counter: 3, user_id: 2, category_id: 3, note_info:'HAHAHAHAHAHHAHAAH'})
+          rating_counter: 3, user_id: 2, category_id: 3, note_info:'HAHAHAHAHAHHAHAAH'}),
+
+          knex('notes').insert({ title: "Drake's dancing moves", url: 'https://www.youtube.com/watch?v=SXmuU9KESpo', 
+          img_url: 'https://i.makeagif.com/media/11-03-2015/_NFXlu.gif', 
+          rating_counter: 100, user_id: 3, category_id: 3, note_info:'Tennis = Dancing'}),
+
+          knex('notes').insert({ title: 'kanye and fish buddy', url: 'https://www.youtube.com/watch?v=SXmuU9KESpo', 
+          img_url: 'https://media0.giphy.com/media/8wfeGJVRwFaTrP9VOL/source.gif', 
+          rating_counter: 69, user_id: 2, category_id: 3, note_info:'Fishes out of water'})
 
           
         ]);
