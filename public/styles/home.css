@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+  }
+  
+  img { border: 0; }
+  
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .cl { clear: both; }
+  
+  section {
+    text-align: center;
+    line-height: 60px;
+  }
+  
+  #main {
+    -webkit-column-width: 202px;
+    -moz-column-width: 202px;
+    o-column-width: 202px;
+    -ms-column-width: 202px;
+    column-width: 202px;
+  }
+  
+  .box { padding: 10px 0 0 15px; }
+  
+  .pic {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 180px;
+    box-shadow: 0 0 5px #666;
+  }
+  
+  .pic img {
+    width: 180px;
+    height: auto;
+    display: block;
+  }
