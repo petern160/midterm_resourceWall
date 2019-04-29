@@ -192,7 +192,7 @@ app.get('/notes/:postid',  function (req, res) {
   //i want to look at note id 1 and any comments  associated with notes id 1
   const postid = req.params.postid;
 
-   knex.select('title', 'first_name', 'img_url', 'rating_counter', 'url', 'category_id', 'notes.id', 'users.id').from('notes')
+   knex.select('title', 'first_name', 'img_url', 'rating_counter', 'url', 'category_id', 'notes.id', 'note_info').from('notes')
    .leftJoin('users', 'users.id', 'notes.user_id')
    .leftJoin('comments', 'users.id', 'comments.note_id')
    .where('notes.id', postid)
@@ -276,7 +276,7 @@ app.get('/notes/:postid',  function (req, res) {
 app.get('/notes/bookmarks/:user_id',  function (req, res) {
   // select * from bookmarks where user_id = sesssion_id 
   const user_ID = req.session.userID;
-  knex.select('note_id', 'title', 'bookmarks.user_id', 'img_url', 'rating_counter', 'url', 'users.first_name').from('bookmarks')
+  knex.select('note_id', 'title', 'bookmarks.user_id', 'img_url', 'rating_counter', 'url', 'users.first_name', 'note_info').from('bookmarks')
   .leftJoin('notes', 'bookmarks.note_id', 'notes.id')
   .leftJoin('users', 'bookmarks.user_id', 'users.id')
   .where('bookmarks.user_id', user_ID)

@@ -25,20 +25,11 @@ $(() => {
 
     });
   })
+  //hide comments on page load
+  $('.posted-comment').hide();
 
-  // $('#new-comment-form').on('submit', function(){
-  //   let formData = $(this).serialize()
-    
-  //   $.ajax({
-  //     url: 'huhy',
-  //     method: 'POST',
-  //     data: formData,
-  //     success: function (data){
-  //       console.warn(formData)
-  //       console.log(data)
-  //     } 
-  //   })
-  // })
-  
+  $('#comment-btn').on('click', function (){
+    $('.posted-comment').fadeToggle('slow')
+  })
   
 })

@@ -73,12 +73,13 @@
             
             <a href="<%= noteData[0].url %>"> 
                 <div class='note-img-wrapper'>
-                    <img src="<%= noteData[0].img_url %>" width="50%" height="50%">
+                    <img src="<%= noteData[0].img_url %>" width="80%" height="80%">
                 </div>
             </a>
 
             <div class="note-creator">
                 <h4> <%= noteData[0].first_name %> </h4>
+                <p> <%= noteData[0].note_info %> </p>
             </div>
 
             <footer class='note-footer'>
@@ -105,9 +106,11 @@
         </article>
         
         <!-- Posted comments box -->
-        <% if (data.length >= 1) { %>
+        <div class='container'>
+            <button id='comment-btn' type="button" class="btn btn-secondary">Show Comments</button>
+        </div>
+    
         <% for(var i=0; i < data.length ; i++) { %>
-
         <article class='posted-comment'>
             <header class='Pcomment-header'>
                 <h2 class='Pcomment-name'> <%= data[i].first_name %> </h2>
@@ -122,7 +125,8 @@
             </footer>
 
         </article>
-        <% }} %>
+        <% } %>
+    
         
         <div name='TESTimage' class='container'>  
             <img src="https://ya-webdesign.com/images/notepad-icon-png.png" width="50%" height="50%">

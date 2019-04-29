@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
   
@@ -67,27 +66,34 @@
     </div>
   
   <main class='container'>
-        <h1> here are your bookmarks: <%= data[0].first_name %> </h1>
+        <h1> Here are your bookmarks: <%= data[0].first_name %> </h1>
         <% for(var i=0; i < data.length; i++) { %>
 
-      <article class='single-note'>
-          <header class='note-header'>
+        <article class='single-note'>
+            <header class='note-header'>
+                <h3> <%= data[i].title %></h3> 
+            </header> 
+            
+            <a href="<%= data[i].url %>"> 
+                <div class='note-img-wrapper'>
+                    <img src="<%= data[i].img_url %>" width="80%" height="80%">
+                </div>
+            </a>
+
+            <div class="note-creator">
+                <h4> <%= data[i].note_info %> </h4>
+            </div>
+
+            <footer class='note-footer'>
         
-              <h3 text-align="center"> <%= data[i].title %></h3> 
-          </header> 
-          
-          <a href="<%= data[i].url %>"> 
-              <div class='note-img-wrapper'>
-                  <img src="<%= data[i].img_url %>" width="50%" height="50%">
-              </div>
-          </a>
+                <div class="btn-group" role="vote-counter" aria-label="vote-counter">
+                    <button id='rating-up' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-up' style='font-size:24px'></i></button>
+                    <button id='rating-counter' type="button" class="btn btn-secondary" disabled><%= data[i].rating_counter %></button>
+                    <button id='rating-down' type="button" class="btn btn-secondary"><i class='fas fa-arrow-circle-down' style='font-size:24px'></i></button>
+                </div>
+ 
+            </footer>
 
-          <div class="note-creator">
-  
-              
-          </div>
-
-          
         </article>
         
         <% } %>
